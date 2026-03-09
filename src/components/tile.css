@@ -1,0 +1,86 @@
+.tile {
+  background: #fff;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #333;
+  min-height: 40px;
+  min-width: 40px;
+  aspect-ratio: 1 / 1;
+  user-select: none;
+}
+
+.tile-first-x {
+  border-left: 1px solid #333;
+}
+
+.custom-pattern {
+  background-image:
+    linear-gradient(#1a8fe5 1px, transparent 1px),
+    linear-gradient(to right, #1a8fe5 1px, transparent 1px);
+  background-size: 4.166666666666667vw 4.166666666666667vw;
+}
+
+.pattern2 {
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 46%,
+      #1a8fe5 48%,
+      #1a8fe5 52%,
+      transparent 54%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 46%,
+      #1a8fe5 48%,
+      #1a8fe5 52%,
+      transparent 54%
+    ),
+    radial-gradient(circle, #1a8fe5 8%, transparent 8%);
+  background-size: 4.166666666666667vw 4.166666666666667vw;
+  background-position: 0 0;
+}
+
+.header {
+  background: #4285f4;
+  color: white;
+  font-weight: bold;
+}
+
+.led {
+  background: #222;
+  color: limegreen;
+}
+
+.cracked {
+  background: #bbb;
+  position: relative;
+}
+
+.cracked::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border: 2px solid #888;
+  border-radius: 5px;
+  transform: rotate(20deg);
+  top: 20%;
+  left: 20%;
+}
+
+.grid-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    #1a8fe5,
+    #1a8fe5 3px,
+    transparent 3px,
+    transparent
+  );
+  background-size: 57px 57px;
+  /* background-color: #1e1b4b; */
+}

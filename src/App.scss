@@ -1,0 +1,48 @@
+@font-face {
+  font-family: officeCodePro;
+  src: url(../src/office-code-pro/officecodepro-bolditalic.otf);
+}
+
+@font-face {
+  font-family: vg5000;
+  src: url(../src/vg5000/fonts/VG5000-Regular.otf);
+}
+
+@font-face {
+  font-family: inter;
+  src: url(../src/Inter/Inter-VariableFont_opsz\,wght.ttf);
+}
+
+:root {
+  font-family: vg5000;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: white;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.parent {
+  font-family: vg5000;
+  display: flex;
+  justify-content: center; /* horizontal */
+  flex-direction: column;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.title-outline {
+  -webkit-text-stroke: 2px black;
+  color: #ffffff;
+  font-family: officeCodePro;
+}
+
+header {
+  color: #000000;
+}

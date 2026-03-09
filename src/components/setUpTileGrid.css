@@ -1,0 +1,9 @@
+.grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(12, 1fr);
+  /* width: 90vw; */
+  background: #ccc;
+  overflow-x: hidden;
+  flex: 50;
+}

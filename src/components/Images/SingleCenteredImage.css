@@ -1,0 +1,46 @@
+.zoomable-image {
+  cursor: zoom-in;
+}
+
+.portrait-image-container {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.landscape-image-container {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.centered-landscape-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  width: 100%;
+  max-width: 90vw;
+  height: auto;
+  max-height: 90vh;
+
+  /* border: 3px solid;
+  border-right-color: var(--buttonshadow);
+  border-bottom-color: var(--buttonshadow);
+  border-left-color: var(--buttonhighlight);
+  border-top-color: var(--buttonhighlight); */
+}
+
+.centered-portrait-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+  width: 100%;
+  max-width: 90vw;
+  max-height: 90vh;
+
+  /* border: 3px solid;
+  border-right-color: var(--buttonshadow);
+  border-bottom-color: var(--buttonshadow);
+  border-left-color: var(--buttonhighlight);
+  border-top-color: var(--buttonhighlight); */
+}
