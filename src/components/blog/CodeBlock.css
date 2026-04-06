@@ -1,0 +1,43 @@
+.code-block {
+  border: 1px solid var(--color-border);
+  margin: var(--space-md, 1rem) 0;
+  font-family: officeCodePro, monospace;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 11px;
+}
+
+.code-block-lang {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
+
+.code-block-copy {
+  background: none;
+  border: 1px solid var(--color-border);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+.code-block-copy:hover,
+.code-block-copy:focus-visible {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.code-block-pre {
+  margin: 0;
+  padding: var(--space-md, 1rem);
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}

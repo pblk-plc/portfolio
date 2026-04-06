@@ -1,0 +1,38 @@
+.divider {
+  font-family: var(--font-accent);
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-md, 1rem) 0;
+}
+
+.divider-vertical {
+  display: inline-block;
+  border-top: none;
+  border-left: 1px solid var(--color-border);
+  height: 1em;
+  margin: 0 var(--space-sm, 0.5rem);
+  vertical-align: middle;
+}
+
+/* Labeled divider */
+div.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm, 0.5rem);
+  border: none;
+  margin: var(--space-md, 1rem) 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.divider-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  white-space: nowrap;
+}

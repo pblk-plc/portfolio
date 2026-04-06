@@ -1,0 +1,35 @@
+.education-entry {
+  font-family: var(--font-accent);
+  font-size: 14px;
+}
+
+.education-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.education-degree {
+  margin: 0;
+  font-size: 16px;
+}
+
+.education-institution {
+  opacity: 0.7;
+}
+
+.education-dates {
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.education-details {
+  margin: 8px 0;
+  padding-left: 1.2em;
+}
+
+.education-details li {
+  margin-bottom: 2px;
+}

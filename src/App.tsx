@@ -1,63 +1,51 @@
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Nav from "./components/nav";
-import { SingleCenteredImage } from "./components/Images/SingleCenteredImage";
 import Header from "./components/Header";
+import PageContainer from "./components/layout/PageContainer";
+import Footer from "./components/layout/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
+import ScrollToTop from "./components/foundation/ScrollToTop";
+import { SITE } from "./config/site";
+
+const Home = lazy(() => import("./pages/Home"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Photography = lazy(() => import("./pages/Photography"));
+const PhotographyCategory = lazy(() => import("./pages/PhotographyCategory"));
+const About = lazy(() => import("./pages/About"));
+const Resume = lazy(() => import("./pages/Resume"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
+      <a href="#main" className="skip-link">
+        Skip to main content
+      </a>
       <header>
-        <Header text={"P.B.L.K."} />
+        <Header text={SITE.brand} />
         <Nav />
       </header>
-      <div className="parent">
-        <SingleCenteredImage
-          src="./img/chocolate_cookies.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/grilled_mushrooms.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/roasted_veg_salad.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/veg_alfredo.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/veg_lentil_soup.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/veg_stir_fry.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/veggie_carbonara.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        <SingleCenteredImage
-          src="./img/veggie_tacos.jpg"
-          alt="Car hood"
-        ></SingleCenteredImage>
-        {/* <SetUpTileGrid /> */}
-
-        <h2>❤ Things I like ❤</h2>
-        <ul>
-          <li>📘 Reading</li>
-          <li>🔎 Problem solving</li>
-          <li>🏷 Buying clothes</li>
-        </ul>
-
-        <h2>❤ Things I don't like ❤</h2>
-        <ul>
-          <li>📘 Reading</li>
-          <li>📘 Reading</li>
-        </ul>
-      </div>
-    </>
+      <PageContainer>
+        <ErrorBoundary>
+          <Suspense>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/photography" element={<Photography />} />
+              <Route path="/photography/:category" element={<PhotographyCategory />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
+      </PageContainer>
+      <Footer />
+      <ScrollToTop />
+    </BrowserRouter>
   );
 }

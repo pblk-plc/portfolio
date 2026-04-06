@@ -1,5 +1,13 @@
-.zoomable-image {
+.image-zoom-trigger {
+  all: unset;
   cursor: zoom-in;
+  display: block;
+  width: 100%;
+}
+
+.image-zoom-trigger:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 2px;
 }
 
 .portrait-image-container {

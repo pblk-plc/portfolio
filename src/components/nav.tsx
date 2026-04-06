@@ -1,52 +1,67 @@
+import { NavLink } from "react-router-dom";
 import "./nav.css";
 
 export default function Nav() {
   return (
     <nav className="vtn-nav">
-      {/* Top category */}
       <ul className="nav-row top">
         <li>
-          <a className="nav-link" href="">
-            Home 0 1 2
-          </a>
+          <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/">
+            Home
+          </NavLink>
         </li>
         <li>
-          <a className="nav-link active" href="">
+          <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/blog">
             Thoughts
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a className="nav-link" href="">
+          <NavLink
+            className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+            to="/photography"
+          >
             Photography
-          </a>
+          </NavLink>
         </li>
         <li>
-          <a className="nav-link" href="">
+          <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/about">
             About
-          </a>
+          </NavLink>
         </li>
       </ul>
-      {/* CONTACT */}
-      <h2 className="label">CONTACT</h2>
+      <span className="label">CONTACT</span>
       <ul className="nav-row mid">
         <li>
-          <a className="nav-link" href="">
-            Home
+          <NavLink
+            className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+            to="/resume"
+          >
+            Resume
+          </NavLink>
+        </li>
+        <li>
+          <a className="nav-link" href="mailto:email">
+            Email
           </a>
         </li>
         <li>
-          <a className="nav-link" href="">
-            Thoughts
+          <a
+            className="nav-link"
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub<span className="sr-only"> (opens in new tab)</span>
           </a>
         </li>
         <li>
-          <a className="nav-link" href="">
-            Photography
-          </a>
-        </li>
-        <li>
-          <a className="nav-link" href="">
-            About
+          <a
+            className="nav-link"
+            href="https://linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn<span className="sr-only"> (opens in new tab)</span>
           </a>
         </li>
       </ul>

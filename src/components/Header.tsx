@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 type HeaderProps = {
   text: string;
@@ -8,69 +8,70 @@ function getRandomNumberInRange(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export default function Header(props: HeaderProps) {
-  const { text: finalText } = props;
-  const glitches = "`¡™£¢∞§¶•ªº–≠åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷/?░▒▓<>/".split("");
+function prefersReducedMotion(): boolean {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
-  const finalTextChars = finalText.split("");
+export default function Header({ text: finalText }: HeaderProps) {
+  const glitches = useMemo(() => "`¡™£¢∞§¶•ªº–≠åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷/?░▒▓<>/".split(""), []);
+  const finalTextChars = useMemo(() => finalText.split(""), [finalText]);
 
   const initGlitchState = () => {
-    var final = "";
-    var newChar = "";
+    if (prefersReducedMotion()) return finalText;
+
+    let result = "";
+    let newChar = "";
 
     for (let i = 0; i < finalTextChars.length; i++) {
-      while (final.includes(newChar)) {
-        const j = getRandomNumberInRange(
-          Math.floor(glitches.length / 2),
-          glitches.length - 1,
-        );
-
+      while (result.includes(newChar)) {
+        const j = getRandomNumberInRange(Math.floor(glitches.length / 2), glitches.length - 1);
         newChar = glitches[j];
       }
-
-      final += newChar;
+      result += newChar;
     }
 
-    return final;
+    return result;
   };
 
   const [displayText, setDisplayText] = useState(initGlitchState);
 
-  const decryptGlitchState = () => {
+  const decryptGlitchState = useCallback(() => {
     setDisplayText((prev) => {
       const textChars = prev.split("");
-      var final = "";
+      let result = "";
 
       for (let i = 0; i < finalTextChars.length; i++) {
         const finalTextChar = finalTextChars[i];
         const currentChar = textChars[i];
-
         const currentIndex = glitches.indexOf(currentChar);
 
-        if (currentIndex == 0 || currentChar == finalTextChar) {
-          final += finalTextChar;
+        if (currentIndex === 0 || currentChar === finalTextChar) {
+          result += finalTextChar;
           continue;
         }
 
-        const newChar = glitches[currentIndex - 1];
-        final += newChar;
+        result += glitches[currentIndex - 1];
       }
 
-      return final;
+      return result;
     });
-  };
+  }, [finalTextChars, glitches]);
 
   useEffect(() => {
-    if (displayText != finalText) {
+    if (displayText !== finalText) {
       const time = getRandomNumberInRange(20, 60);
-      const interval = setInterval(() => decryptGlitchState(), time);
+      const interval = setInterval(decryptGlitchState, time);
       return () => clearInterval(interval);
     }
   }, [displayText, finalText, decryptGlitchState]);
 
   return (
     <div>
-      <h1 className="title-outline">{displayText}</h1>
+      {/* WCAG 1.3.1 Info and Relationships — aria-label provides the real brand
+          name so screen readers don't read glitch characters during animation */}
+      <h1 className="title-outline" aria-label={finalText}>
+        {displayText}
+      </h1>
     </div>
   );
 }

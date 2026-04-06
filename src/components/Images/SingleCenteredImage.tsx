@@ -12,10 +12,7 @@ const Orientation = {
   Portrait: "portrait",
 };
 
-export const SingleCenteredImage = ({
-  src,
-  alt = "Image",
-}: CenteredImageProps) => {
+export const SingleCenteredImage = ({ src, alt = "Image" }: CenteredImageProps) => {
   const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
   const [isZoomed, setIsZoomed] = useState(false);
 
@@ -36,19 +33,14 @@ export const SingleCenteredImage = ({
   };
 
   let isImageHorizontal = dimensions.width > dimensions.height;
-  let imageOrientation = isImageHorizontal
-    ? Orientation.Landscape
-    : Orientation.Portrait;
+  let imageOrientation = isImageHorizontal ? Orientation.Landscape : Orientation.Portrait;
 
   return (
     <div className={`${imageOrientation}-image-container`}>
-      <img
-        src={src}
-        className={`centered-${imageOrientation}-image zoomable-image`}
-        alt={alt}
-        onClick={onOpen}
-      />
-      <ImageLightbox src={src} isZoomed={isZoomed} onClose={onClose} />
+      <button type="button" className="image-zoom-trigger" onClick={onOpen}>
+        <img src={src} className={`centered-${imageOrientation}-image`} alt={alt} />
+      </button>
+      <ImageLightbox src={src} alt={alt} isZoomed={isZoomed} onClose={onClose} />
     </div>
   );
 };

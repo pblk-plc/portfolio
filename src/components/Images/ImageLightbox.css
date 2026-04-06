@@ -1,7 +1,7 @@
 .lightbox {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-overlay);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,13 +13,35 @@
 }
 
 .lightbox-image {
-  background-color: rgb(from var(--applicationworkspace) r g b / 0%);
   object-fit: contain;
   z-index: 9999;
   max-width: 95vw;
   max-height: 95vh;
   width: 100%;
   height: auto;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  border: 1px solid var(--color-border);
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--color-bg);
+  outline-offset: 2px;
 }
 
 /* Animations for lightbox opening and closing */
@@ -29,7 +51,6 @@
 
 .lightbox.fade-enter-active {
   opacity: 1;
-  transition: opacity 300ms ease-in-out;
 }
 
 .lightbox.fade-exit {
@@ -38,5 +59,13 @@
 
 .lightbox.fade-exit-active {
   opacity: 0;
-  transition: opacity 300ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox.fade-enter-active {
+    transition: opacity 300ms ease-in-out;
+  }
+  .lightbox.fade-exit-active {
+    transition: opacity 300ms ease-in-out;
+  }
 }

@@ -1,0 +1,42 @@
+.experience-entry {
+  font-family: var(--font-accent);
+  font-size: 14px;
+}
+
+.experience-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.experience-role {
+  margin: 0;
+  font-size: 16px;
+}
+
+.experience-company {
+  opacity: 0.7;
+}
+
+.experience-dates {
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.experience-list {
+  margin: 8px 0;
+  padding-left: 1.2em;
+}
+
+.experience-list li {
+  margin-bottom: 2px;
+}
+
+.experience-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}

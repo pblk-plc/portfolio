@@ -1,0 +1,29 @@
+.skill-bar {
+  margin-bottom: var(--space-sm, 0.5rem);
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.skill-bar-name {
+  font-weight: 600;
+}
+
+.skill-bar-level {
+  opacity: 0.5;
+  font-size: 11px;
+}
+
+.skill-bar-track {
+  height: 6px;
+  background: #eee;
+  border: 1px solid var(--color-border);
+}
+
+.skill-bar-fill {
+  height: 100%;
+}
